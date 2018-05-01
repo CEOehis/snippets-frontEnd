@@ -1,0 +1,8 @@
+.note-card {
+  transition: all 800ms;
+  cursor: pointer;
+}
+
+.note-card:hover {
+  box-shadow: 0px 5px 10px rgb(92, 85, 85);
+}

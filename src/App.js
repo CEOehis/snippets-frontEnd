@@ -32,7 +32,7 @@ class App extends Component {
             <Grid container spacing={16}>
               {this.state.notes.map(note => (
               <Grid item xs={6} sm={3}key={note._id}>
-                <Card>
+                <Card className="note-card" style={{height: 200}}>
                   <CardContent>
                     <Typography component="h3" style={{fontWeight: 'bold'}} >
                       {note.title ? note.title : 'snippet ...' + note._id.slice(0,6)}
