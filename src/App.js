@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Navbar from './components/Navbar';
 import './App.css';
-import Card, { CardActions, CardContent } from 'material-ui/Card';
+import Card, { CardContent } from 'material-ui/Card';
 import Typography from 'material-ui/Typography';
 import Grid from 'material-ui/Grid';
 import moment from 'moment';
@@ -21,7 +21,7 @@ class App extends Component {
         this.setState({
           notes: result.notes
         })
-        shave('.note', 120)
+        shave('.note', 100)
       });
   }
   render() {
@@ -33,7 +33,7 @@ class App extends Component {
             <Grid container spacing={16}>
               {this.state.notes.map(note => (
               <Grid item xs={6} sm={3}key={note._id}>
-                <Card style={{ height: 200 }} >
+                <Card>
                   <CardContent>
                     <Typography component="h3" style={{fontWeight: 'bold'}} >
                       {note.title}
@@ -41,11 +41,10 @@ class App extends Component {
                     <Typography component="small">
                       {moment(note.updated).format('MMMM Do YYYY')}
                     </Typography>
-                    <Typography component="p" className="note">
+                    <Typography style={{ height: 100 }}  component="p" className="note">
                       {note.body}
                     </Typography>
                   </CardContent>
-
                 </Card>
               </Grid>
               ))}
