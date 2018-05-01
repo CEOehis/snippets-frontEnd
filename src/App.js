@@ -13,6 +13,12 @@ class App extends Component {
     notes: []
   }
 
+  constructor() {
+    super();
+
+    this.showAddNoteForm = this.showAddNoteForm.bind(this);
+  }
+
   componentDidMount() {
     fetch('/api/notes')
       .then((response => response.json()))
@@ -23,10 +29,13 @@ class App extends Component {
         shave('.note', 100)
       });
   }
+
+  showAddNoteForm() {
+    this.props.history.push('/note/create');
+  }
   render() {
     return (
       <div className="App">
-        <Navbar title="Snippet" />
         <Grid container style={{ padding: 20 }} >
           <Grid item xs={12} style={{postion: 'relative'}}>
             <Grid container spacing={16}>
@@ -50,7 +59,7 @@ class App extends Component {
             </Grid>
           </Grid>
         </Grid>
-        <AddNoteButton />
+        <AddNoteButton onAddNoteClick={this.showAddNoteForm} />
       </div>
     );
   }
