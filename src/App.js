@@ -6,8 +6,7 @@ import Typography from 'material-ui/Typography';
 import Grid from 'material-ui/Grid';
 import moment from 'moment';
 import shave from 'shave';
-
-global.shave = shave;
+import AddNoteButton from './components/AddNoteButton';
 
 class App extends Component {
   state = {
@@ -29,14 +28,14 @@ class App extends Component {
       <div className="App">
         <Navbar title="Snippet" />
         <Grid container style={{ padding: 20 }} >
-          <Grid item xs={12}>
+          <Grid item xs={12} style={{postion: 'relative'}}>
             <Grid container spacing={16}>
               {this.state.notes.map(note => (
               <Grid item xs={6} sm={3}key={note._id}>
                 <Card>
                   <CardContent>
                     <Typography component="h3" style={{fontWeight: 'bold'}} >
-                      {note.title}
+                      {note.title ? note.title : 'snippet ...' + note._id.slice(0,6)}
                     </Typography>
                     <Typography component="small">
                       {moment(note.updated).format('MMMM Do YYYY')}
@@ -51,6 +50,7 @@ class App extends Component {
             </Grid>
           </Grid>
         </Grid>
+        <AddNoteButton />
       </div>
     );
   }
