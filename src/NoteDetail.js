@@ -3,6 +3,7 @@ import moment from 'moment';
 import Card, { CardContent } from 'material-ui/Card';
 import Grid from 'material-ui/Grid';
 import Typography from 'material-ui/Typography';
+import Button from 'material-ui/Button';
 
 
 class NoteDetail extends Component {
@@ -51,6 +52,12 @@ class NoteDetail extends Component {
               <Typography component="p" className="note">
                 {body}
               </Typography>
+              <Button style={{margin: 20, marginLeft: 0, backgroundColor: '#00d300'}} onClick={this.addNote} variant="raised" color="secondary" aria-label="add">
+                Edit
+              </Button>
+              <Button style={{margin: 20, marginLeft: 0}} onClick={this.addNote} variant="raised" color="secondary" aria-label="add">
+                Delete
+              </Button>
             </CardContent>
           </Card>
         </Grid>
