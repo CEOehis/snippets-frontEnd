@@ -10,6 +10,8 @@ class NoteDetail extends Component {
   constructor(props) {
     super(props);
 
+    this.deleteNote = this.deleteNote.bind(this);
+
     this.state = {
       title: '',
       body: '',
@@ -35,10 +37,30 @@ class NoteDetail extends Component {
         });
       });
   }
+
+  deleteNote() {
+    console.log('de')
+    fetch('/api/notes/' + this.state.id + '/delete', {
+      method: 'DELETE',
+      body: JSON.stringify({
+        noteid: this.state.id
+      }),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }).then(res => {
+        console.log(res);
+        return res.json();
+    }).then(res => {
+      console.log(res);
+      console.log(this);
+      this.props.history.push('/')
+    })
+  }
   render() {
     const { title, body, created, updated, id } = this.state
     return (
-      <Grid container container style={{ padding: 20 }}>
+      <Grid container style={{ padding: 20 }}>
         <Grid item xs={12}>
           <Card>
             <CardContent>
@@ -52,10 +74,10 @@ class NoteDetail extends Component {
               <Typography component="p" className="note">
                 {body}
               </Typography>
-              <Button style={{margin: 20, marginLeft: 0, backgroundColor: '#00d300'}} onClick={this.addNote} variant="raised" color="secondary" aria-label="add">
+              <Button style={{margin: 20, marginLeft: 0, backgroundColor: '#00d300'}}variant="raised" color="secondary" aria-label="add">
                 Edit
               </Button>
-              <Button style={{margin: 20, marginLeft: 0}} onClick={this.addNote} variant="raised" color="secondary" aria-label="add">
+              <Button onClick={this.deleteNote} style={{margin: 20, marginLeft: 0}} variant="raised" color="secondary" aria-label="add">
                 Delete
               </Button>
             </CardContent>
