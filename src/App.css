@@ -1,6 +1,7 @@
 .note-card {
   transition: all 800ms;
   cursor: pointer;
+  border-radius: 5px !important;
 }
 
 .note-card:hover {

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Navbar from './components/Navbar';
 import './App.css';
 import Card, { CardContent } from 'material-ui/Card';
 import Typography from 'material-ui/Typography';
