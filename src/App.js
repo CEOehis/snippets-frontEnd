@@ -32,6 +32,11 @@ class App extends Component {
   showAddNoteForm() {
     this.props.history.push('/note/create');
   }
+
+
+  showNoteDetail(id) {
+    this.props.history.push('/note/' + id);
+  }
   render() {
     return (
       <div className="App">
@@ -40,7 +45,7 @@ class App extends Component {
             <Grid container spacing={16}>
               {this.state.notes.map(note => (
               <Grid item xs={6} sm={3}key={note._id}>
-                <Card className="note-card" style={{height: 200}}>
+                <Card onClick={() => this.showNoteDetail(note._id)} className="note-card" style={{height: 200}}>
                   <CardContent>
                     <Typography component="h3" style={{fontWeight: 'bold'}} >
                       {note.title ? note.title : 'snippet ...' + note._id.slice(0,6)}
