@@ -7,6 +7,7 @@ import Typography from 'material-ui/Typography';
 import Button from 'material-ui/Button';
 import IconButton from 'material-ui/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
+import { Link } from "react-router-dom";
 
 const styles = {
   root: {
@@ -19,6 +20,10 @@ const styles = {
     marginLeft: -12,
     marginRight: 20,
   },
+  link: {
+    color: 'white',
+    textDecoration: 'none',
+  }
 };
 
 function Navbar(props) {
@@ -31,7 +36,7 @@ function Navbar(props) {
             <MenuIcon />
           </IconButton>
           <Typography variant="title" color="inherit" className={classes.flex}>
-            {props.title}
+            <Link className={classes.link} to="/">{props.title}</Link>
           </Typography>
           <Button color="inherit">Login</Button>
         </Toolbar>
