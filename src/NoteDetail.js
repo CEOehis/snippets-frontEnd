@@ -11,6 +11,7 @@ class NoteDetail extends Component {
     super(props);
 
     this.deleteNote = this.deleteNote.bind(this);
+    this.showEditNoteForm = this.showEditNoteForm.bind(this);
 
     this.state = {
       title: '',
@@ -57,6 +58,15 @@ class NoteDetail extends Component {
       this.props.history.push('/')
     })
   }
+
+  showEditNoteForm() {
+    console.log(this);
+    var editUrl = `/note/${this.state.id}/edit`;
+    this.props.history.push({
+      pathname: editUrl,
+      note: this.state
+    });
+  }
   render() {
     const { title, body, created, updated, id } = this.state
     return (
@@ -74,7 +84,7 @@ class NoteDetail extends Component {
               <Typography component="p" className="note">
                 {body}
               </Typography>
-              <Button style={{margin: 20, marginLeft: 0, backgroundColor: '#00d300'}}variant="raised" color="secondary" aria-label="add">
+              <Button onClick={this.showEditNoteForm} style={{margin: 20, marginLeft: 0, backgroundColor: '#00d300'}}variant="raised" color="secondary" aria-label="add">
                 Edit
               </Button>
               <Button onClick={this.deleteNote} style={{margin: 20, marginLeft: 0}} variant="raised" color="secondary" aria-label="add">
