@@ -43,7 +43,15 @@ class App extends Component {
         <Grid container style={{ padding: 20 }} >
           <Grid item xs={12} style={{postion: 'relative'}}>
             <Grid container spacing={16}>
-              {this.state.notes.map(note => (
+              {this.state.notes.slice().sort((firstNote, secondNote) => {
+                if(firstNote.updated > secondNote.updated) {
+                  return -1;
+                }
+                if(firstNote.updated < secondNote.updated) {
+                  return 1
+                };
+                return 0;
+              }).map(note => (
               <Grid item xs={6} sm={3}key={note._id}>
                 <Card onClick={() => this.showNoteDetail(note._id)} className="note-card" style={{height: 200}}>
                   <CardContent>
