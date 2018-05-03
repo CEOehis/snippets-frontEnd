@@ -42,11 +42,10 @@ class AddNote extends Component {
         'Content-Type': 'application/json'
       }
     }).then(response => {
-      console.log(response);
       return response.json()
     })
       .then(data => {
-        console.log(data)
+        this.props.history.push('/note/' + data.note._id);
       });
   }
 
