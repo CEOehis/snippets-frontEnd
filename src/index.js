@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Navbar from './components/Navbar';
 import AddNote from './AddNote';
 import NoteDetail from './NoteDetail';
+import EditNote from './EditNote';
 
 class AppRouting extends Component {
   render() {
@@ -17,6 +18,7 @@ class AppRouting extends Component {
           <Switch>
             <Route exact path="/" component={App} />
             <Route path="/note/create" component={AddNote} />
+            <Route path="/note/:id/edit" component={EditNote} />
             <Route path="/note/:id" component={NoteDetail} />
           </Switch>
         </div>
