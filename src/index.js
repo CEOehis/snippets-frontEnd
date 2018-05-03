@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Navbar from './components/Navbar';
 import AddNote from './AddNote';
 import NoteDetail from './NoteDetail';
@@ -14,9 +14,11 @@ class AppRouting extends Component {
       <Router>
         <div>
           <Navbar title="Snippet" />
-          <Route exact path="/" component={App} />
-          <Route exact path="/note/create" component={AddNote} />
-          <Route exact path="/note/:id" component={NoteDetail} />
+          <Switch>
+            <Route exact path="/" component={App} />
+            <Route path="/note/create" component={AddNote} />
+            <Route path="/note/:id" component={NoteDetail} />
+          </Switch>
         </div>
       </Router>
     )
